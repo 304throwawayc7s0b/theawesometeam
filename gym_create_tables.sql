@@ -1,150 +1,142 @@
 Create Table FitnessMeasurement (
-Height double,
-startDate int,
-fmID int,
-weight double,
-BodyFat int,
-Water int,
-MuscleMass double,
-CustomerID int,
+Height BINARY_FLOAT,
+startDate varchar2(8),
+fmID varchar2(8),
+weight BINARY_FLOAT,
+BodyFat varchar2(8),
+Water varchar2(8),
+MuscleMass BINARY_FLOAT,
+CustomerID varchar2(8),
 Primary key (fmID, CustomerID),
 FOREIGN KEY (CustomerID) REFERENCES GymMember
 ON DELETE CASCADE
-)
+);
 
 Create Table GymMember (
-CustomerID int,
+CustomerID varchar2(8),
 custType char(20),
-StartDate int NOT NULL,
-EndDate	int NOT NULL,
-StartTime int NOT NULL,
-EndTime	int NOT NULL,
+StartDate varchar2(8) NOT NULL,
+EndDate	varchar2(8) NOT NULL,
+StartTime varchar2(8) NOT NULL,
+EndTime	varchar2(8) NOT NULL,
 PRIMARY KEY (CustomerID),
 FOREIGN KEY(CustomerID) REFERENCES Customer
-ON DELETE CASCADE
+ON DELETE CASCADE,
 FOREIGN KEY (StartDate, EndDate, StartTime, EndTime) REFERENCES TimePeriod
-ON UPDATE CASCADE
-ON DELETE NO ACTION)
+ON DELETE SET NULL);
 
 Create Table Customer (
-CustomerID int,
+CustomerID varchar2(8),
 Phone char(50),
 Name char(50),
 Address	char(1000),
 CreditCard char(50),
 Primary key (CustomerID)
-)
+);
 
 Create Table Instructor (
-InstructorID int,
+InstructorID varchar2(8),
 Phone char(50),
 Name char(50),
 Gender char(50),
-HrRate double,
+HrRate BINARY_FLOAT,
 FirstName char(50),
 LastName char(50),
-InstructorType char(50)
+InstructorType char(50),
 Primary key (InstructorID)
-)
+);
 
 
 Create Table Class (
-ClassID int,
-Duration int,
-TotalFee int,
-Room int,
-InstructorID int NOT NULL,
-StartDate int NOT NULL,
-EndDate	int NOT NULL,
-StartTime int NOT NULL,
-EndTime	int NOT NULL,
-ClassTypeID int NOT NULL,
+ClassID varchar2(8),
+Duration varchar2(8),
+TotalFee varchar2(8),
+Room varchar2(8),
+InstructorID varchar2(8) NOT NULL,
+StartDate varchar2(8) NOT NULL,
+EndDate	varchar2(8) NOT NULL,
+StartTime varchar2(8) NOT NULL,
+EndTime	varchar2(8) NOT NULL,
+ClassTypeID varchar2(8) NOT NULL,
 Primary key (ClassID),
 UNIQUE	(InstructorID),
 FOREIGN KEY(InstructorID) REFERENCES Instructor
 ON DELETE CASCADE,
 FOREIGN KEY (StartDate, EndDate, StartTime, EndTime) 
 REFERENCES TimePeriod
-ON DELETE No action
+ON DELETE SET NULL,
 FOREIGN KEY (ClassTypeID) 
 REFERENCES ClassType
-ON DELETE No action
-)
+ON DELETE SET NULL
+);
 
 Create Table TimePeriod (
-StartDate int,
-EndDate	int,
-StartTime int,
-EndTime	int,
+StartDate varchar2(8),
+EndDate	varchar2(8),
+StartTime varchar2(8),
+EndTime	varchar2(8),
 Primary key (StartDate, EndDate, StartTime, EndTime)
-)
+);
 
 
 Create Table ClassType(
-ClassTypeID int,
+ClassTypeID varchar2(8),
 Description char(100),
-HrRate int,
+HrRate varchar2(8),
 Features char(200),
 Primary key (ClassTypeID)
-)
+);
 
-CREATE TABLE Branch(
+CREATE TABLE GymBranch(
 Location char(30),
 City char(20),
 Primary key (Location, City)
-)
+);
 
 CREATE TABLE Equipment(
-EquipID	int,
-PurchaseDate int,
-PurchasePrice double,
-EquipType char(15)
+EquipID	varchar2(8),
+PurchaseDate varchar2(8),
+PurchasePrice BINARY_FLOAT,
+EquipType char(15),
 Location char(30),
 City char(20),
-PRIMARY KEY (EquipID, Location, City)
-FOREIGN KEY (Location, City) REFERENCES Branch
+PRIMARY KEY (EquipID, Location, City),
+FOREIGN KEY (Location, City) REFERENCES GymBranch
 ON DELETE CASCADE
-)
+);
 
 Create Table Hosted(
 Location char(30),
 City char(30),
-ClassID	Integer
-PRIMARY KEY(Location, City, ClassID)
-FOREIGN KEY(Location, City) References Branch
-ON DELETE CASCADE
-ON UPDATE CASCADE
+ClassID	varchar2(8),
+PRIMARY KEY(Location, City, ClassID),
+FOREIGN KEY(Location, City) References GymBranch
+ON DELETE CASCADE,
 FOREIGN KEY	(ClassID) References Class
 ON DELETE CASCADE
-ON UPDATE CASCADE
-)
+);
 Create Table Reservation(
 Location char(30),
 City char(30),
-ClassID	int NOT NULL,
-CustomerID int NOT NULL,
-Confirmation int,
+ClassID	varchar2(8) NOT NULL,
+CustomerID varchar2(8) NOT NULL,
+Confirmation varchar2(8),
 CreditCard char(50),
-CancelationFee int,
+CancelationFee varchar2(8),
 CreatedTime char(20),
 CreatedDate char(20),
-DiscountCode int,
-Primary key (Confirmation#)
-FOREIGN KEY(ClassID) References Class
-ON DELETE NO ACTION
+DiscountCode varchar2(8),
+Primary key (Confirmation),
+FOREIGN KEY(ClassID) References Class,
 FOREIGN KEY(CustomerID) References Customer
 ON DELETE CASCADE
-)
+);
 
 Create Table IsQualifiledIn(
-InstructorID int NOT NULL,
-ClassTypeID int NOT NULL,
-Primary key (InstructorID, ClassTypeID)
+InstructorID varchar2(8) NOT NULL,
+ClassTypeID varchar2(8) NOT NULL,
+Primary key (InstructorID, ClassTypeID),
 FOREIGN KEY(InstructorID) References Instructor
-ON DELETE CASCADE
-ON UPDATE CASCADE
+ON DELETE CASCADE,
 FOREIGN KEY(ClassTypeId) References ClassType
-ON DELETE NO ACTION
-ON UPDATE CASCADE
-)
-
+ON DELETE SET NULL);
