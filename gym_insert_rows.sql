@@ -7,28 +7,28 @@
 --Data for table  Customer
 
 
---Data for tableInstructor
+--Data for table Instructor
 
 
 --Data for table Class
 
 
---Data for tableTimePeriod
+--Data for table TimePeriod
 
 
 --Data for table ClassType
 
 
---Data for tableEquipment
+--Data for table Equipment
 
 
---Data for tableHosted
+--Data for table Hosted
 
 
---Data for tableReservation
+--Data for table Reservation
 
 
---Data for tableIsQualifiledIn
+--Data for table IsQualifiledIn
   
   
 commit;
