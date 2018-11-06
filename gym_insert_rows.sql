@@ -30,3 +30,5 @@
 
 --Data for tableIsQualifiledIn
   
+  
+commit;
