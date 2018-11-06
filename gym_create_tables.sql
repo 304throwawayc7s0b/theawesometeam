@@ -1,6 +1,6 @@
 Create Table FitnessMeasurement (
 Height double,
-Date int,
+startDate int,
 fmID int,
 weight double,
 BodyFat int,
@@ -28,16 +28,16 @@ ON DELETE NO ACTION)
 
 Create Table Customer (
 CustomerID int,
-Phone# char(50),
+Phone char(50),
 Name char(50),
 Address	char(1000),
-CreditCard# char(50),
+CreditCard char(50),
 Primary key (CustomerID)
 )
 
 Create Table Instructor (
 InstructorID int,
-Phone# char(50),
+Phone char(50),
 Name char(50),
 Gender char(50),
 HrRate double,
@@ -52,7 +52,7 @@ Create Table Class (
 ClassID int,
 Duration int,
 TotalFee int,
-Room # int,
+Room int,
 InstructorID int NOT NULL,
 StartDate int NOT NULL,
 EndDate	int NOT NULL,
