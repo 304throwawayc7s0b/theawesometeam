@@ -14,7 +14,7 @@ ON DELETE CASCADE
 
 Create Table GymMember (
 CustomerID int,
-Type char(20),
+custType char(20),
 StartDate int NOT NULL,
 EndDate	int NOT NULL,
 StartTime int NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE Equipment(
 EquipID	int,
 PurchaseDate int,
 PurchasePrice double,
-Type char(15)
+EquipType char(15)
 Location char(30),
 City char(20),
 PRIMARY KEY (EquipID, Location, City)
@@ -123,8 +123,8 @@ Location char(30),
 City char(30),
 ClassID	int NOT NULL,
 CustomerID int NOT NULL,
-Confirmation# int,
-CreditCard# char(50),
+Confirmation int,
+CreditCard char(50),
 CancelationFee int,
 CreatedTime char(20),
 CreatedDate char(20),
