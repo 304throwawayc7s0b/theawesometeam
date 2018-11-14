@@ -9,9 +9,14 @@ $confirmation = "";
 ?>
 
 <div class="column content intro">
+    <h3>Delete Reservation</h3>
+    <form method="POST" action="customer_reservation.php">
+        <label for="confirmation">Confirmation #:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
+        <p><input type="submit" value="Delete" name="delete"></p>
+    </form>
   <h3>Search Reservation</h3>
   <form method="POST" action="customer_reservation.php">
-    <label for="confirmation">Confirmation:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
+    <label for="confirmation">Confirmation #:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
     <p><input type="submit" value="Search" name="search"></p>
   </form>
 
@@ -52,14 +57,8 @@ function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL com
   return $statement;
 
 }
-function executeBoundSQL($cmdstr, $list) {
-  /* Sometimes the same statement will be executed for several times ... only
-   the value of variables need to be changed.
-   In this case, you don't need to create the statement several times;
-   using bind variables can make the statement be shared and just parsed once.
-   This is also very useful in protecting against SQL injection.
-      See the sample code below for how this functions is used */
 
+function executeBoundSQL($cmdstr, $list) {
   global $db_conn, $success;
   $statement = OCIParse($db_conn, $cmdstr);
 
@@ -72,8 +71,6 @@ function executeBoundSQL($cmdstr, $list) {
 
   foreach ($list as $tuple) {
     foreach ($tuple as $bind => $val) {
-      //echo $val;
-      //echo "<br>".$bind."<br>";
       OCIBindByName($statement, $bind, $val);
       unset ($val); //make sure you do not remove this. Otherwise $val will remain in an array object wrapper which will not be recognized by Oracle as a proper datatype
 
@@ -111,7 +108,6 @@ function printResult($result, $conf) { //prints results from a select statement
 if ($db_conn) {
 
   if (array_key_exists('search', $_POST)) {
-    //Getting the values from user and insert data into the table
     $tuple = array (
       ":bind1" => $_POST['confirmation']
     );
@@ -123,6 +119,17 @@ if ($db_conn) {
     OCICommit($db_conn);
 
     printResult($result, $_POST['confirmation']);
+  } else if(array_key_exists('delete', $_POST)) {
+    $tuple = array (
+      ":bind1" => $_POST['confirmation']
+    );
+    $alltuples = array (
+      $tuple
+    );
+    executeBoundSQL("delete from reservation where confirmation=:bind1", $alltuples);
+    OCICommit($db_conn);
+    echo "Reservation successfully deleted.";
+
   } else {
     //Commit to save changes...
     OCILogoff($db_conn);
