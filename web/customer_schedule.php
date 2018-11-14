@@ -5,13 +5,15 @@
 
 <?php
 // define variables and set to empty values
-$confirmation = "";
+$name = $phone = "";
 ?>
 
+
 <div class="column content intro">
-  <h3>Search Reservation</h3>
-  <form method="POST" action="customer_reservation.php">
-    <label for="confirmation">Confirmation:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
+  <h3>Find your schedule</h3>
+  <form method="POST" action="customer_schedule.php">
+    <label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name;?>">
+    <label for="phone">Phone:</label> <input type="text" name="phone" value="<?php echo $phone;?>">
     <p><input type="submit" value="Search" name="search"></p>
   </form>
 
@@ -91,20 +93,19 @@ function executeBoundSQL($cmdstr, $list) {
 
 }
 
-function printResult($result, $conf) { //prints results from a select statement
-    $i = 0;
-    echo "<br><h4>Reservation for confirmation #" . $conf .": </h4><br>";
-    echo "<table>";
-    echo "<tr><th>Location</th><th>City</th><th>Room</th><th>Start Time</th><th>End Time</th><th>Instructor</th></tr>";
-
-    while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
-      $i++;
-      echo "<tr><td>" . $row["LOCATION"] . "</td><td>" . $row["CITY"] . "</td><td>" . $row["ROOM"] . "</td><td>" . $row["STARTTIME"] . "</td><td>" . $row["ENDTIME"] . "</td><td>" . $row["FIRSTNAME"] ." ". $row["LASTNAME"] . "</td></tr>"; //or just use "echo $row[0]"
-    }
-    echo "</table>";
-    if ($i == 0) {
-        echo "<br><h4>No Reservation Found.</h4><br>";
-    }
+function printResult($result) { //prints results from a select statement
+  $i = 0;
+  echo "<br><h4>Your Schedule: </h4><br>";
+  echo "<table>";
+  echo "<tr><th>Room</th><th>Start Time</th><th>End Time</th><th>Duration</th><th>Description</th></tr>";
+  while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
+    $i++;
+    echo "<tr><td>" . $row["ROOM"] . "</td><td>" . $row["STARTTIME"] . "</td><td>" . $row["ENDTIME"] . "</td><td>" . $row["DURATION"] . "</td><td>" . $row["DESCRIPTION"] . "</td></tr>"; //or just use "echo $row[0]"
+  }
+  echo "</table>";
+  if ($i == 0) {
+    echo "<br><h4>No Schedule Found.</h4><br>";
+  }
 }
 
 // Connect Oracle...
@@ -113,16 +114,19 @@ if ($db_conn) {
   if (array_key_exists('search', $_POST)) {
     //Getting the values from user and insert data into the table
     $tuple = array (
-      ":bind1" => $_POST['confirmation']
+      ":bind1" => $_POST['name'],
+      ":bind2" => $_POST['phone']
     );
     $alltuples = array (
       $tuple
     );
 
-    $result = executeBoundSQL("select r.location, r.city, c.room, c.StartTime, c.EndTime, i.FirstName, i.LastName from reservation r, class c, instructor i where confirmation=:bind1 AND r.classid=c.classid AND c.InstructorID=i.InstructorID", $alltuples);
+    // select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, customer cu, classtype ct where cu.name = :bind1 AND cu.phone=:bind2 AND cu.CustomerID=r.CustomerID AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID
+    $result = executeBoundSQL("select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, customer cu, classtype ct where cu.name = :bind1 AND cu.phone=:bind2 AND cu.CustomerID=r.CustomerID AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID", $alltuples);
     OCICommit($db_conn);
-
-    printResult($result, $_POST['confirmation']);
+    // select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from customer cu inner join reservation r on cu.CustomerID=r.CustomerID inner join class c on r.classid=c.classid inner join classtype ct on c.ClassTypeID=ct.ClassTypeID where cu.name ='Sarina' AND cu.phone='778-319-3333';
+    // $result = executePlainSQL("select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from customer cu inner join reservation r on cu.CustomerID=r.CustomerID inner join class c on r.classid=c.classid inner join classtype ct on c.ClassTypeID=ct.ClassTypeID where cu.name ='Sarina' AND cu.phone='778-319-3333'");
+    printResult($result);
   } else {
     //Commit to save changes...
     OCILogoff($db_conn);
