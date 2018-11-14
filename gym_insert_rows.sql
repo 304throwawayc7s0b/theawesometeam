@@ -4,7 +4,7 @@ insert into customer values (1,'778-319-3333','Sarina','15168 32nd Street', '111
 
 
 --Data for table  GymMember
-insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm')
+insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm');
 
 
 --Data for table FitnessMeasurement
