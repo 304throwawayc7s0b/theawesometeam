@@ -1,81 +1,44 @@
 <!DOCTYPE html>
-
+<?php include 'header.php';?>
 <html>
-
-<head>
-
-<link rel="stylesheet" type="text/css" href="style.css">
-
-</head>
 <body>
 
-  <?php
-    // define variables and set to empty values
-    $nameErr = $emailErr = $genderErr = $websiteErr = "";
-    $name = $email = $gender = $phoneNumber = "";
-  ?>
+<?php
+// define variables and set to empty values
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $phoneNumber = "";
+?>
 
-<div class="welcome">
-  <span class="welcome">CPSC304 Team 5</span>
-  <span class="welcome" style="font-size: 90%; padding:0px 10px 15px 100px;">
-   Friendship Gym
-  </span>
-</div>
-
-<ul class="header">
-  <li class="dropdown header">
-    <a href="member_add.php">Membership Management</a>
-        <div class="dropdown_list">
-            <a href="member_delete.php">View Members</a>
-            <a href="member_add.php">Add Membership</a>
-        </div>
-  </l1>
-
-  <li class="dropdown header">
-    <a href="schedule_mng.html">Schedule Management</a>
-      <div class="dropdown_list">
-            <a href="schedule_mng.html">View</a>
-            <a href="schedule_mng.html">Modify</a>
-      </div>
-  </li>
-  
-  <li class="dropdown header">
-    <a href="equip_mng.html">Equipment Management</a>
-    <div class="dropdown_list">
-      <a href="equip_mng.html">View</a>
-        <a href="equip_mng.html">Modify</a>
-    </div>
-  </li>
-  
-</ul>
-
-
-  <div class="column content">
+<div class="column content">
     <h3>Add Membership</h3>
     <label><span class="error">* required</span></label>
-    <form method="post" action="member_add.php">  
-      <label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name;?>">
-      <span class="error">* <?php echo $nameErr;?></span>
-      <br><br>
-      <label for="name">E-mail:</label> <input type="text" name="email" value="<?php echo $email;?>">
-      <span class="error"><?php echo $emailErr;?></span>
-      <br><br>
-      <label for="name">Phone Number:</label> <input type="text" name="phoneNumber" value="<?php echo $phoneNumber;?>">
-      <span class="error">* <?php echo $websiteErr;?></span>
-      <br><br>
-      <label for="name">Gender:</label>
-      <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-      <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-      <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other  
-      <span class="error">* <?php echo $genderErr;?></span>
-      <br><br>
-      <div class="button">
-        <input type="submit" name="submit" value="Submit">  
-      </div>
-      
+    <form method="post" action="member_add.php">
+        <label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name; ?>">
+        <span class="error">* <?php echo $nameErr; ?></span>
+        <br><br>
+        <label for="name">E-mail:</label> <input type="text" name="email" value="<?php echo $email; ?>">
+        <span class="error"><?php echo $emailErr; ?></span>
+        <br><br>
+        <label for="name">Phone Number:</label> <input type="text" name="phoneNumber"
+                                                       value="<?php echo $phoneNumber; ?>">
+        <span class="error">* <?php echo $websiteErr; ?></span>
+        <br><br>
+        <label for="name">Gender:</label>
+        <input type="radio" name="gender" <?php if (isset($gender) && $gender == "female") echo "checked"; ?>
+               value="female">Female
+        <input type="radio" name="gender" <?php if (isset($gender) && $gender == "male") echo "checked"; ?>
+               value="male">Male
+        <input type="radio" name="gender" <?php if (isset($gender) && $gender == "other") echo "checked"; ?>
+               value="other">Other
+        <span class="error">* <?php echo $genderErr; ?></span>
+        <br><br>
+        <div class="button">
+            <input type="submit" name="submit" value="Submit">
+        </div>
+
     </form>
 
-  </div>
+</div>
 
 <?php
 
@@ -85,7 +48,8 @@
 $success = True; //keep track of errors so it redirects the page only if there are no errors
 $db_conn = OCILogon("ora_u2m0b", "a38920154", "dbhost.ugrad.cs.ubc.ca:1522/ug");
 
-function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL command and executes it
+function executePlainSQL($cmdstr)
+{ //takes a plain (no bound variables) SQL command and executes it
   //echo "<br>running ".$cmdstr."<br>";
   global $db_conn, $success;
   $statement = OCIParse($db_conn, $cmdstr); //There is a set of comments at the end of the file that describe some of the OCI specific functions and how they work
@@ -111,7 +75,8 @@ function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL com
 
 }
 
-function executeBoundSQL($cmdstr, $list) {
+function executeBoundSQL($cmdstr, $list)
+{
   /* Sometimes the same statement will be executed for several times ... only
    the value of variables need to be changed.
    In this case, you don't need to create the statement several times; 
@@ -149,7 +114,8 @@ function executeBoundSQL($cmdstr, $list) {
 
 }
 
-function printResult($result) { //prints results from a select statement
+function printResult($result)
+{ //prints results from a select statement
   echo "<br>Got data from table Members:<br>";
   echo "<table>";
   echo "<tr><th>Name</th><th>EMail</th><th>PhoneNumber</th><th>Gender</th></tr>";
@@ -165,20 +131,20 @@ function printResult($result) { //prints results from a select statement
 if ($db_conn) {
 
   if (array_key_exists('submit', $_POST)) {
-      //Getting the values from user and insert data into the table
-      $tuple = array (
-        ":bind1" => $_POST['name'],
-        ":bind2" => $_POST['email'],
-        ":bind3" => $_POST['phoneNumber'],
-        ":bind4" => $_POST['gender']
-      );
-      $alltuples = array (
-        $tuple
-      );
-      executeBoundSQL("insert into Members values (:bind1, :bind2, :bind3, :bind4)", $alltuples);
-      OCICommit($db_conn);
+    //Getting the values from user and insert data into the table
+    $tuple = array(
+      ":bind1" => $_POST['name'],
+      ":bind2" => $_POST['email'],
+      ":bind3" => $_POST['phoneNumber'],
+      ":bind4" => $_POST['gender']
+    );
+    $alltuples = array(
+      $tuple
+    );
+    executeBoundSQL("insert into Members values (:bind1, :bind2, :bind3, :bind4)", $alltuples);
+    OCICommit($db_conn);
 
-    } 
+  }
 
   if ($_POST && $success) {
     //POST-REDIRECT-GET -- See http://en.wikipedia.org/wiki/Post/Redirect/Get
@@ -198,7 +164,6 @@ if ($db_conn) {
 }
 
 ?>
-
 
 
 </body>
