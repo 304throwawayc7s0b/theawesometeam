@@ -1,14 +1,18 @@
---Data for table FitnessMeasurement
-
-
---Data for table  GymMember
-
-
 --Data for table  Customer
 insert into customer values (1,'778-319-3333','Sarina','15168 32nd Street', '1111-111-1111');
 
+
+
+--Data for table  GymMember
+insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm')
+
+
+--Data for table FitnessMeasurement
+
+
 --Data for table Instructor
 insert into instructor values (1,'778-778-778','female',30,'Ann', 'Perkins', 'Yoga');
+insert into instructor values (2,'778-123-778','male',20,'Kev', 'Perkins', 'Yoga');
 
 --Data for table TimePeriod
 insert into timeperiod values('20181001', '20181101', '11am', '12pm');
