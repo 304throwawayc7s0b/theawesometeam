@@ -10,14 +10,12 @@ $name = $phone = "";
 
 
 <div class="column content intro">
-  <h3>Find your schedule</h3>
-  <form method="POST" action="customer_schedule.php">
-    <label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name;?>">
-    <label for="phone">Phone:</label> <input type="text" name="phone" value="<?php echo $phone;?>">
-    <p><input type="submit" value="Search" name="search"></p>
+  <h3>View fitness profile:</h3>
+  <form method="POST" action="customer_fitness.php">
+    <p><label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name;?>"></p>
+    <p><label for="phone">Phone:</label> <input type="text" name="phone" value="<?php echo $phone;?>"></p>
+    <p><input type="submit" value="View Profile" name="view"></p>
   </form>
-
-
 </div>
 
 
@@ -31,7 +29,7 @@ function executePlainSQL($cmdstr) {
 
   if (!$statement) {
     echo "<br>Cannot parse the following command: " . $cmdstr . "<br>";
-    $e = OCI_Error($db_conn); // For OCIParse errors pass the
+    $e = OCI_Error($db_conn);
     // connection handle
     echo htmlentities($e['message']);
     $success = False;
@@ -81,23 +79,23 @@ function executeBoundSQL($cmdstr, $list) {
 
 function printResult($result) { //prints results from a select statement
   $i = 0;
-  echo "<br><h4>Your Schedule: </h4><br>";
+  echo "<br><h4>Fitness profile: </h4><br>";
   echo "<table>";
-  echo "<tr><th>Room</th><th>Start Time</th><th>End Time</th><th>Duration</th><th>Description</th></tr>";
+  echo "<tr><th>Date</th><th>Height</th><th>Weight</th><th>Body Fat(%)</th><th>Water %</th><th>Muscle Mass(%)</th></tr>";
   while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
     $i++;
-    echo "<tr><td>" . $row["ROOM"] . "</td><td>" . $row["STARTTIME"] . "</td><td>" . $row["ENDTIME"] . "</td><td>" . $row["DURATION"] . "</td><td>" . $row["DESCRIPTION"] . "</td></tr>"; //or just use "echo $row[0]"
+    echo "<tr><td>" . $row["STARTDATE"] . "</td><td>" . $row["HEIGHT"] . "</td><td>" . $row["WEIGHT"] . "</td><td>" . $row["BODYFAT"] . "</td><td>" . $row["WATER"] . "</td><td>" . $row["MUSCLEMASS"] . "</td></tr>"; //or just use "echo $row[0]"
   }
   echo "</table>";
   if ($i == 0) {
-    echo "<br><h4>No Schedule Found.</h4><br>";
+    echo "<br><h4>No Profile Found.</h4><br>";
   }
 }
 
 // Connect Oracle...
 if ($db_conn) {
 
-  if (array_key_exists('search', $_POST)) {
+  if(array_key_exists('view', $_POST)){
     $tuple = array (
       ":bind1" => $_POST['name'],
       ":bind2" => $_POST['phone']
@@ -106,10 +104,10 @@ if ($db_conn) {
       $tuple
     );
 
-    // select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, customer cu, classtype ct where cu.name = :bind1 AND cu.phone=:bind2 AND cu.CustomerID=r.CustomerID AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID
-    $result = executeBoundSQL("select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, customer cu, classtype ct where cu.name = :bind1 AND cu.phone=:bind2 AND cu.CustomerID=r.CustomerID AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID", $alltuples);
+    $result = executeBoundSQL("select fm.height, fm.startDate, fm.weight, fm.bodyfat, fm.water, fm.musclemass FROM FitnessMeasurement fm, customer c WHERE c.Name=:bind1 AND c.Phone=:bind2 AND fm.CustomerID = c.CustomerID", $alltuples);
     OCICommit($db_conn);
     printResult($result);
+
   } else {
     //Commit to save changes...
     OCILogoff($db_conn);
