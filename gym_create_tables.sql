@@ -58,8 +58,8 @@ Primary key (CustomerID)
 );
 
 CREATE TABLE GymBranch(
-Location varchar2(30),
-City varchar2(20),
+Location varchar2(100),
+City varchar2(50),
 Primary key (Location, City)
 );
 
