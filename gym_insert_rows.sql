@@ -35,7 +35,7 @@ insert into reservation values('Point Grey','Vancouver',1,1,'12345678','1111-111
 --Data for table IsQualifiledIn
   
  --Data for table GymBranch
- insert into GymBranch values("Sunset Centre","Vancouver");
- insert into GymBranch values("Killarney Centre","Vancouver");
+ insert into GymBranch values('Sunset Centre','Vancouver');
+ insert into GymBranch values('Killarney Centre','Vancouver');
  
 commit;
