@@ -51,8 +51,6 @@ insert into Customer (CustomerID, Phone, Name, Address, CreditCard) values (49, 
 insert into Customer (CustomerID, Phone, Name, Address, CreditCard) values (50, '779-175-3613', 'Giustino Billings', '08865 Bobwhite Point', '3543314153536555');
 
 
-
-
 --Data for table  GymMember
 insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm');
 
@@ -63,15 +61,71 @@ insert into gymmember values (1,'monthly member', '20181001','20181101', '11am',
 --Data for table Instructor
 insert into instructor values (1,'778-778-778','female',30,'Ann', 'Perkins', 'Yoga');
 insert into instructor values (2,'778-123-778','male',20,'Kev', 'Perkins', 'Yoga');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (3, '198-299-4566', 'Female', 30.48, 'Jacquelin', 'Tuffley', 'boxing');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (4, '303-277-4527', 'Female', 41.27, 'Kate', 'Cater', 'boxing');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (5, '363-479-1980', 'Female', 44.63, 'Sarena', 'Pledger', 'boxing');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (6, '320-629-6554', 'Female', 64.32, 'Tamara', 'Scrooby', 'yoga');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (7, '647-297-9173', 'Male', 59.44, 'Ian', 'Feedham', 'cardio');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (8, '169-920-5668', 'Male', 43.97, 'Marlo', 'Tompsett', 'cardio');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (9, '995-295-8190', 'Male', 38.86, 'Dilly', 'Teather', 'cardio');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (10, '389-459-5976', 'Female', 61.77, 'Lidia', 'Maplethorp', 'dance');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (11, '787-183-7879', 'Male', 55.81, 'Hugh', 'Monckton', 'dance');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (12, '640-723-4295', 'Female', 68.88, 'Lillis', 'O''Farris', 'dance');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (13, '207-793-6383', 'Male', 89.18, 'Orran', 'Addey', 'dance');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (14, '196-624-0445', 'Female', 59.91, 'Malinde', 'Boynes', 'personal training');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (15, '373-645-1337', 'Male', 72.63, 'Blayne', 'Kegg', 'personal training');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (16, '178-151-5119', 'Male', 88.62, 'Bryant', 'Persence', 'personal training');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (17, '565-752-6989', 'Female', 87.52, 'Edita', 'Alleway', 'personal training');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (18, '149-242-4064', 'Male', 76.82, 'Trumaine', 'Sonley', 'personal training');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (19, '117-664-9620', 'Male', 66.33, 'Craggy', 'Windrum', 'personal training');
+insert into Instructor (InstructorID, phone, gender, hrrate, firstname, lastname, InstructorType) values (20, '711-222-3116', 'Female', 92.64, 'Teresita', 'Puddifer', 'personal training');
 
 --Data for table TimePeriod
 insert into timeperiod values('20181001', '20181101', '11am', '12pm');
+insert into timeperiod values('20181001', '20181101', '10am', '12pm');
+insert into timeperiod values('20181001', '20181101', '1pm', '2pm');
+insert into timeperiod values('20181001', '20181101', '3pm', '5pm');
+insert into timeperiod values('20181101', '20181201', '11am', '12pm');
+insert into timeperiod values('20181101', '20181201', '10am', '12pm');
+insert into timeperiod values('20181101', '20181201', '1pm', '2pm');
+insert into timeperiod values('20181101', '20181201', '3pm', '5pm');
 
 --Data for table ClassType
 insert into classtype values(1, 'beginner yoga', '30', 'yoga');
+insert into classtype values(2, 'intermediate yoga', '35', 'yoga');
+insert into classtype values(3, 'advanced yoga', '40', 'yoga');
+insert into classtype values(4, 'beginner personal training', '30', 'personal training');
+insert into classtype values(5, 'intermediate personal training', '35', 'personal training');
+insert into classtype values(6, 'advanced personal training', '40', 'personal training');
+insert into classtype values(7, 'beginner cardio', '30', 'cardio');
+insert into classtype values(8, 'intermediate cardio', '35', 'cardio');
+insert into classtype values(9, 'advanced cardio', '40', 'cardio');
+insert into classtype values(10, 'beginner boxing', '30', 'boxing');
+insert into classtype values(11, 'intermediate boxing', '35', 'boxing');
+insert into classtype values(12, 'advanced boxing', '40', 'boxing');
+insert into classtype values(13, 'dance', '40', 'dance');
 
 --Data for table Class
-insert into class values(1,'1hr','45','Room10',1,'20181001','20181101', '11am', '12pm',1);
+insert into class values(1,'1hr','45','Room100',1,'20181001','20181101', '11am', '12pm',1);
+insert into class values(2,'2hr','45','Room101',2,'20181001', '20181101', '10am', '12pm',2);
+insert into class values(3,'1hr','45','Room101',3,'20181001','20181101', '11am', '12pm',10);
+insert into class values(4,'2hr','45','Room102',4,'20181001', '20181101', '10am', '12pm',10);
+insert into class values(5,'1hr','45','Room102',5,'20181101', '20181201', '11am', '12pm',11);
+insert into class values(6,'1hr','45','Room103',6,'20181101', '20181201', '11am', '12pm',3);
+insert into class values(7,'1hr','45','Room103',7,'20181001','20181101', '11am', '12pm',7);
+insert into class values(8,'1hr','45','Room104',8,'20181001','20181101', '1pm', '2pm',7);
+insert into class values(9,'1hr','45','Room104',9,'20181001','20181101', '11am', '12pm',7);
+insert into class values(10,'1hr','45','Room105',10,'20181001','20181101', '1pm', '2pm',13);
+insert into class values(11,'2hr','45','Room105',11,'20181001','20181101', '3pm', '5pm',1);
+insert into class values(12,'2hr','45','Room106',12,'20181001', '20181101', '10am', '12pm',3);
+insert into class values(13,'2hr','45','Room106',13,'20181001','20181101', '3pm', '5pm',10);
+insert into class values(14,'2hr','45','Room106',14,'20181001', '20181101', '10am', '12pm',12);
+insert into class values(15,'1hr','45','Room107',15,'20181101', '20181201', '11am', '12pm',11);
+insert into class values(16,'2hr','45','Room107',16,'20181101', '20181201', '3pm', '5pm',3);
+insert into class values(17,'1hr','45','Room107',17,'20181001','20181101', '11am', '12pm',7);
+insert into class values(18,'1hr','45','Room108',18,'20181001','20181101', '1pm', '2pm',9);
+insert into class values(19,'1hr','45','Room108',19,'20181001','20181101', '11am', '12pm',8);
+insert into class values(20,'1hr','45','Room108',20,'20181001','20181101', '1pm', '2pm',13);
 
 --Data for table Equipment
 
@@ -80,12 +134,24 @@ insert into class values(1,'1hr','45','Room10',1,'20181001','20181101', '11am', 
 
 
 --Data for table Reservation
-insert into reservation values('Point Grey','Vancouver',1,1,'12345678','1111-111-1111','$30','12:30pm','2018-10-01','n/a');
+insert into reservation values('Killarney Centre','Vancouver',1,1,'100','6709681032674994','$30','12:00pm','2018-10-01','n/a');
+insert into reservation values('Killarney Centre','Vancouver',2,1,'101','6709681032674994','$30','12:30pm','2018-10-02','n/a');
+insert into reservation values('Sunset Centre','Vancouver',3,1,'10000002','6709681032674994','$30','1:30pm','2018-10-03','n/a');
+insert into reservation values('Sunset Centre','Vancouver',4,2,'1003','4041372099032506','$30','1:30pm','2018-10-01','n/a');
+insert into reservation values('Sunset Centre','Vancouver',5,2,'1004','4041372099032506','$30','2:30pm','2018-10-04','n/a');
+insert into reservation values('Killarney Centre','Vancouver',6,3,'1005','4913449074547172','$30','2:30pm','2018-10-11','n/a');
+insert into reservation values('Sunset Centre','Vancouver',7,3,'1006','4913449074547172','$30','12:00pm','2018-10-01','n/a');
+insert into reservation values('Sunset Centre','Vancouver',8,3,'1007','4913449074547172','$30','12:00pm','2018-10-01','n/a');
+insert into reservation values('Killarney Centre','Vancouver',1,3,'1008','4913449074547172','$30','1:00pm','2018-10-01','n/a');
+insert into reservation values('Point Grey','Vancouver',2,4,'1009','3585917145967529','$30','10:30am','2018-10-03','n/a');
+insert into reservation values('Point Grey','Vancouver',3,5,'1010','6706781493382294','$30','12:30pm','2018-10-02','n/a');
+insert into reservation values('Point Grey','Vancouver',4,5,'1011','6706781493382294','$30','12:30pm','2018-10-01','n/a');
 
 --Data for table IsQualifiledIn
-  
+
  --Data for table GymBranch
- insert into GymBranch values('Sunset Centre','Vancouver');
- insert into GymBranch values('Killarney Centre','Vancouver');
- 
+insert into GymBranch values('Sunset Centre','Vancouver');
+insert into GymBranch values('Killarney Centre','Vancouver');
+insert into GymBranch values('Grey','Vancouver');
+
 commit;
