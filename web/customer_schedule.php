@@ -5,17 +5,22 @@
 
 <?php
 // define variables and set to empty values
-$name = $phone = "";
+$custId = "";
 ?>
 
 
 <div class="column content intro">
   <h3>Find your schedule</h3>
   <form method="POST" action="customer_schedule.php">
-    <label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name;?>">
-    <label for="phone">Phone:</label> <input type="text" name="phone" value="<?php echo $phone;?>">
+      <p><label for="custId">Customer ID:</label> <input type="text" name="custId" value="<?php echo $custId;?>"></p>
     <p><input type="submit" value="Search" name="search"></p>
   </form>
+
+    <h3>Explore classes</h3>
+    <form method="POST" action="customer_schedule.php">
+        <p>View number & type of classes offered:</p>
+        <p><input type="submit" value="Explore" name="explore"></p>
+    </form>
 
 
 </div>
@@ -94,22 +99,34 @@ function printResult($result) { //prints results from a select statement
   }
 }
 
+function printClassResult($result) { //prints class results from view
+  echo "<br><h4>Classes Offered: </h4><br>";
+  echo "<table>";
+  echo "<tr><th>Class Description</th><th>Hourly rate</th><th># of classes offered</th></tr>";
+  while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
+    echo "<tr><td>" . $row["DESCRIPTION"] . "</td><td>$" . $row["HRRATE"] . "</td><td>" . $row["COUNT"] . "</td></tr>";
+  }
+  echo "</table>";
+}
+
 // Connect Oracle...
 if ($db_conn) {
 
   if (array_key_exists('search', $_POST)) {
     $tuple = array (
-      ":bind1" => $_POST['name'],
-      ":bind2" => $_POST['phone']
+      ":bind1" => $_POST['custId']
     );
     $alltuples = array (
       $tuple
     );
 
     // select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, customer cu, classtype ct where cu.name = :bind1 AND cu.phone=:bind2 AND cu.CustomerID=r.CustomerID AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID
-    $result = executeBoundSQL("select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, customer cu, classtype ct where cu.name = :bind1 AND cu.phone=:bind2 AND cu.CustomerID=r.CustomerID AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID", $alltuples);
+    $result = executeBoundSQL("select c.Duration, c.room, c.StartTime, c.EndTime, ct.description from reservation r, class c, classtype ct where r.CustomerID=:bind1 AND r.classid=c.classid AND c.ClassTypeID=ct.ClassTypeID", $alltuples);
     OCICommit($db_conn);
     printResult($result);
+  } else if(array_key_exists('explore', $_POST)) {
+    $result = executePlainSQL("select * from class_count_view");
+    printClassResult($result);
   } else {
     //Commit to save changes...
     OCILogoff($db_conn);

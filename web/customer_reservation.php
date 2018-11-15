@@ -9,16 +9,18 @@ $confirmation = "";
 ?>
 
 <div class="column content intro">
-    <h3>Delete Reservation</h3>
-    <form method="POST" action="customer_reservation.php">
-        <label for="confirmation">Confirmation #:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
-        <p><input type="submit" value="Delete" name="delete"></p>
-    </form>
+
   <h3>Search Reservation</h3>
   <form method="POST" action="customer_reservation.php">
     <label for="confirmation">Confirmation #:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
     <p><input type="submit" value="Search" name="search"></p>
   </form>
+
+    <h3>Delete Reservation</h3>
+    <form method="POST" action="customer_reservation.php">
+        <label for="confirmation">Confirmation #:</label> <input type="text" name="confirmation" value="<?php echo $confirmation;?>">
+        <p><input type="submit" value="Delete" name="delete"></p>
+    </form>
 
 
 </div>

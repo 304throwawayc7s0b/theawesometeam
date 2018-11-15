@@ -5,15 +5,14 @@
 
 <?php
 // define variables and set to empty values
-$name = $phone = "";
+$custId = "";
 ?>
 
 
 <div class="column content intro">
   <h3>View fitness profile:</h3>
   <form method="POST" action="customer_fitness.php">
-    <p><label for="name">Name:</label> <input type="text" name="name" value="<?php echo $name;?>"></p>
-    <p><label for="phone">Phone:</label> <input type="text" name="phone" value="<?php echo $phone;?>"></p>
+    <p><label for="custId">Customer ID:</label> <input type="text" name="custId" value="<?php echo $custId;?>"></p>
     <p><input type="submit" value="View Profile" name="view"></p>
   </form>
 </div>
@@ -97,14 +96,13 @@ if ($db_conn) {
 
   if(array_key_exists('view', $_POST)){
     $tuple = array (
-      ":bind1" => $_POST['name'],
-      ":bind2" => $_POST['phone']
+      ":bind1" => $_POST['custId']
     );
     $alltuples = array (
       $tuple
     );
 
-    $result = executeBoundSQL("select fm.height, fm.startDate, fm.weight, fm.bodyfat, fm.water, fm.musclemass FROM FitnessMeasurement fm, customer c WHERE c.Name=:bind1 AND c.Phone=:bind2 AND fm.CustomerID = c.CustomerID", $alltuples);
+    $result = executeBoundSQL("select fm.height, fm.startDate, fm.weight, fm.bodyfat, fm.water, fm.musclemass FROM FitnessMeasurement fm WHERE fm.CustomerID=:bind1", $alltuples);
     OCICommit($db_conn);
     printResult($result);
 
