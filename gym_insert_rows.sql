@@ -129,10 +129,6 @@ insert into class values(18,'1hr','45','Room108',18,'20181001','20181101', '1pm'
 insert into class values(19,'1hr','45','Room108',19,'20181001','20181101', '11am', '12pm',8);
 insert into class values(20,'1hr','45','Room108',20,'20181001','20181101', '1pm', '2pm',13);
 
---Data for table Equipment
-
-
---Data for table Hosted
 
 
 --Data for table Reservation
@@ -171,5 +167,11 @@ insert into reservation values('Point Grey','Vancouver',4,5,'1011','670678149338
 insert into GymBranch values('Sunset Centre','Vancouver');
 insert into GymBranch values('Killarney Centre','Vancouver');
 insert into GymBranch values('Grey','Vancouver');
+
+--Data for table Equipment
+
+
+--Data for table Hosted
+
 
 commit;
