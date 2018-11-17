@@ -21,24 +21,24 @@
         <a href="member_mng.php">Membership Management</a>
         <div class="dropdown_list">
             <a href="member_delete.php">View Members</a>
-            <a href="member_mng.php">Add Membership</a>
+            <a href="member_add.php">Add Membership</a>
+            <a href="measurements_add.php">Add Member Measurements</a>
+        </div>
+    </li>
+    <li class="dropdown header">
+        <a href="class_add.php">Manage Classes</a>
+        <div class="dropdown_list">
+            <a href="class_add.php">Add Classes</a>
+            <a href="classtype_add.php">Add New Class Type</a>
         </div>
     </li>
 
     <li class="dropdown header">
-        <a href="schedule_mng.html">Schedule Management</a>
-        <div class="dropdown_list">
-            <a href="schedule_mng.html">View</a>
-            <a href="schedule_mng.html">Modify</a>
-        </div>
+        <a href="reservation_add">Schedule Management</a>
     </li>
 
     <li class="dropdown header">
-        <a href="equip_mng.html">Equipment Management</a>
-        <div class="dropdown_list">
-            <a href="equip_mng.html">View</a>
-            <a href="equip_mng.html">Modify</a>
-        </div>
+        <a href="Equipment_add.php">Equipment Management</a>
     </li>
 
     <li class="dropdown header">
