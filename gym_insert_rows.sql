@@ -148,6 +148,19 @@ insert into reservation values('Point Grey','Vancouver',3,5,'1010','670678149338
 insert into reservation values('Point Grey','Vancouver',4,5,'1011','6706781493382294','$30','12:30pm','2018-10-01','n/a');
 
 --Data for table IsQualifiledIn
+ insert into IsQualifiledIn values(1,1);
+ insert into IsQualifiledIn values(1,2);
+ insert into IsQualifiledIn values(1,3);
+ insert into IsQualifiledIn values(1,4);
+ insert into IsQualifiledIn values(1,5);
+ insert into IsQualifiledIn values(1,6);
+ insert into IsQualifiledIn values(1,7);
+ insert into IsQualifiledIn values(1,8);
+ insert into IsQualifiledIn values(1,9);
+ insert into IsQualifiledIn values(1,10);
+ insert into IsQualifiledIn values(1,11);
+ insert into IsQualifiledIn values(1,12);
+ insert into IsQualifiledIn values(1,13);
 
  --Data for table GymBranch
 insert into GymBranch values('Sunset Centre','Vancouver');
