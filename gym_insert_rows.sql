@@ -161,6 +161,9 @@ insert into reservation values('Point Grey','Vancouver',4,5,'1011','670678149338
  insert into IsQualifiledIn values(1,11);
  insert into IsQualifiledIn values(1,12);
  insert into IsQualifiledIn values(1,13);
+ insert into IsQualifiledIn values(3,10);
+ insert into IsQualifiledIn values(4,11);
+ insert into IsQualifiledIn values(4,12);
 
  --Data for table GymBranch
 insert into GymBranch values('Sunset Centre','Vancouver');
