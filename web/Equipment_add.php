@@ -92,6 +92,20 @@ size="18"><input type="text" name="oldLocation" size="18"><input type="text" nam
 <input type="submit" value="update" name="updatesubmit"></p>
 </form>
 </div>
+<div class="column content">
+    <h3>Remove Old Equipment</h3>
+    <label><span class="error">* required</span></label>
+    <form method="post" action="Equipment_add.php">  
+   <label for="EQUIPID">EquipID: </label> <input type="text" name="DeleteEquip">
+      <span class="error">* <?php echo $websiteErr;?></span>
+    <br><br>
+      <div class="button">
+        <input type="submit" name="DeleteEquipment" value="DeleteEquipment">  
+      </div>
+      
+    </form>
+
+  </div>
 <?php
 
 //this tells the system that it's no longer just parsing 
@@ -209,6 +223,19 @@ if ($db_conn) {
           $tuple
         );
         executeBoundSQL("update Equipment set CITY=:bind3, LOCATION=:bind5 where CITY=:bind2 AND EQUIPID=:bind1 AND LOCATION=:bind4", $alltuples);
+        OCICommit($db_conn);
+
+      }
+      else
+      if (array_key_exists('DeleteEquipment', $_POST)) {
+        // Update tuple using data from user
+        $tuple = array (
+          ":bind1" => $_POST['DeleteEquip']
+        );
+        $alltuples = array (
+          $tuple
+        );
+        executeBoundSQL("DELETE FROM Equipment WHERE EQUIPID=:bind1", $alltuples);
         OCICommit($db_conn);
 
       }
