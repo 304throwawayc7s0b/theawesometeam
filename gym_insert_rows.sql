@@ -51,12 +51,6 @@ insert into Customer (CustomerID, Phone, Name, Address, CreditCard) values (49, 
 insert into Customer (CustomerID, Phone, Name, Address, CreditCard) values (50, '779-175-3613', 'Giustino Billings', '08865 Bobwhite Point', '3543314153536555');
 
 
---Data for table  GymMember
-insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm');
-
-
---Data for table FitnessMeasurement
-
 
 --Data for table Instructor
 insert into instructor values (1,'778-778-778','female',30,'Ann', 'Perkins', 'Yoga');
@@ -89,6 +83,14 @@ insert into timeperiod values('20181101', '20181201', '11am', '12pm');
 insert into timeperiod values('20181101', '20181201', '10am', '12pm');
 insert into timeperiod values('20181101', '20181201', '1pm', '2pm');
 insert into timeperiod values('20181101', '20181201', '3pm', '5pm');
+
+
+--Data for table  GymMember
+insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm');
+
+
+--Data for table FitnessMeasurement
+
 
 --Data for table ClassType
 insert into classtype values(1, 'beginner yoga', '30', 'yoga');
