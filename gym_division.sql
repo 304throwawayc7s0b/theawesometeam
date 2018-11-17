@@ -1,6 +1,6 @@
-//Find instructos qualified to teach all class types
+//Find id, first name and last name of instructors qualified to teach all class types
 
-SELECT distinct instructorid FROM IsQualifiledIn q1
+SELECT  instructorid, firstname, lastname FROM Instructor q1
 WHERE NOT EXISTS 
 (( SELECT ct.ClassTypeID FROM ClassType ct )
  MINUS 
