@@ -2,54 +2,7 @@
 <?php include 'header.php';?>
 
 <html>
-
-<head>
-
-<link rel="stylesheet" type="text/css" href="style.css">
-
-</head>
 <body>
-<div class="welcome">
-  <span class="welcome">CPSC304 Team 5</span>
-  <span class="welcome" style="font-size: 90%; padding:0px 10px 15px 100px;">
-   Friendship Gym
-  </span>
-</div>
-
-<ul class="header">
-    <li class="dropdown header">
-        <a href="member_add.php">Membership Management</a>
-        <div class="dropdown_list">
-            <a href="member_add.php">Add Membership</a>
-            <a href="measurements_add.php">Add Member Measurements</a>
-        </div>
-    </li>
-    <li class="dropdown header">
-        <a href="class_add.php">Manage Classes</a>
-        <div class="dropdown_list">
-            <a href="class_add.php">Add Classes</a>
-            <a href="classtype_add.php">Add New Class Type</a>
-        </div>
-    </li>
-
-    <li class="dropdown header">
-        <a href="reservation_add">Schedule Management</a>
-    </li>
-
-    <li class="dropdown header">
-        <a href="Equipment_add.php">Equipment Management</a>
-    </li>
-
-    <li class="dropdown header">
-        <a href="#">Customer View</a>
-        <div class="dropdown_list">
-            <a href="customer_reservation.php">Manage Reservation</a>
-            <a href="customer_schedule.php">View Class Schedule</a>
-            <a href="customer_fitness.php">View Fitness Measurements</a>
-        </div>
-    </li>
-
-</ul>
   <?php
     // define variables and set to empty values
     $nameErr = $emailErr = $genderErr = $websiteErr = "";
@@ -60,48 +13,48 @@
   <div class="column content">
     <h3>Add Reservation</h3>
     <label><span class="error">* required</span></label>
-    <form method="post" action="reservation_add.php">  
-      <label for="name">Location:</label> 
+    <form method="post" action="reservation_add.php">
+      <label for="name">Location:</label>
         <input type="text" name="Location">
       <br><br>
-      <label for="name">City:</label> 
+      <label for="name">City:</label>
         <input type="text" name="City">
       <br><br>
       <label for="name">Class ID:</label>
         <input type="text" name="ClassID">
     <br><br>
       <label for="name">Customer ID:</label>
-        <input type="text" name="CustomerID"> 
+        <input type="text" name="CustomerID">
       <br><br>
         <label for="name">Confirmation #:</label>
-      <input type="text" name="Confirmation"> 
+      <input type="text" name="Confirmation">
       <br><br>
         <label for="name">Credit Card:</label>
-        <input type="text" name="CreditCard"> 
+        <input type="text" name="CreditCard">
       <br><br>
         <label for="name">CancelationFee:</label>
-      <input type="text" name="CancelationFee"> 
+      <input type="text" name="CancelationFee">
       <br><br>
         <label for="name">CreatedTime:</label>
-      <input type="text" name="CreatedTime"> 
+      <input type="text" name="CreatedTime">
       <br><br>
         <label for="name">CreatedDate:</label>
-      <input type="text" name="CreatedDate"> 
+      <input type="text" name="CreatedDate">
       <br><br>
         <label for="name">Discount Code:</label>
-      <input type="text" name="DiscountCode"> 
+      <input type="text" name="DiscountCode">
         <br><br>
       <div class="button">
-        <input type="submit" name="typesubmit" value="Submit">  
+        <input type="submit" name="typesubmit" value="Submit">
     </div>
-      
+
     </form>
 
   </div>
 
 <?php
 
-//this tells the system that it's no longer just parsing 
+//this tells the system that it's no longer just parsing
 //html; it's now parsing PHP
 
 $success = True; //keep track of errors so it redirects the page only if there are no errors
@@ -114,7 +67,7 @@ function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL com
 
   if (!$statement) {
     echo "<br>Cannot parse the following command: " . $cmdstr . "<br>";
-    $e = OCI_Error($db_conn); // For OCIParse errors pass the       
+    $e = OCI_Error($db_conn); // For OCIParse errors pass the
     // connection handle
     echo htmlentities($e['message']);
     $success = False;
@@ -136,9 +89,9 @@ function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL com
 function executeBoundSQL($cmdstr, $list) {
   /* Sometimes the same statement will be executed for several times ... only
    the value of variables need to be changed.
-   In this case, you don't need to create the statement several times; 
+   In this case, you don't need to create the statement several times;
    using bind variables can make the statement be shared and just parsed once.
-   This is also very useful in protecting against SQL injection.  
+   This is also very useful in protecting against SQL injection.
       See the sample code below for how this functions is used */
 
   global $db_conn, $success;
@@ -188,7 +141,7 @@ function printResult($result) { //prints results from a select statement
   </tr>";
 
   while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
-    echo "<tr><td>" .  $row[0] . "</td><td>" .  $row[1] . "</td><td>".  $row[2] . "</td><td>" .  $row[3] . "</td><td>" .  $row[4] . "</td><td>" .  $row[5] . "</td><td>" .  $row[6] . "</td><td>" .  $row[7] . "</td><td>" .  $row[8] . "</td><td>" .  $row[9] . "</td></tr>"; //or just use "echo $row[0]" 
+    echo "<tr><td>" .  $row[0] . "</td><td>" .  $row[1] . "</td><td>".  $row[2] . "</td><td>" .  $row[3] . "</td><td>" .  $row[4] . "</td><td>" .  $row[5] . "</td><td>" .  $row[6] . "</td><td>" .  $row[7] . "</td><td>" .  $row[8] . "</td><td>" .  $row[9] . "</td></tr>"; //or just use "echo $row[0]"
   }
   echo "</table>";
 
@@ -217,7 +170,7 @@ if ($db_conn) {
       executeBoundSQL("insert into Reservation values (:bind1, :bind2, :bind3, :bind4, :bind5, :bind6, :bind7, :bind8, :bind9, :bind10)", $alltuples);
       OCICommit($db_conn);
 
-    } 
+    }
 
   if ($_POST && $success) {
     //POST-REDIRECT-GET -- See http://en.wikipedia.org/wiki/Post/Redirect/Get
@@ -243,4 +196,3 @@ if ($db_conn) {
 </body>
 
 </html>
-

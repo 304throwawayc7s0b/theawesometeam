@@ -18,13 +18,6 @@
 
 <ul class="header">
     <li class="dropdown header">
-        <a href="member_add.php">Membership Management</a>
-        <div class="dropdown_list">
-            <a href="member_add.php">Add Membership</a>
-            <a href="measurements_add.php">Add Member Measurements</a>
-        </div>
-    </li>
-    <li class="dropdown header">
         <a href="class_add.php">Manage Classes</a>
         <div class="dropdown_list">
             <a href="class_add.php">Add Classes</a>
@@ -33,7 +26,7 @@
     </li>
 
     <li class="dropdown header">
-        <a href="reservation_add">Schedule Management</a>
+        <a href="reservation_add.php">Schedule Management</a>
     </li>
 
     <li class="dropdown header">

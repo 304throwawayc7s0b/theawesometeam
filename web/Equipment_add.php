@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-
+<?php include 'header.php';?>
 <html>
 
-<head>
-
-<link rel="stylesheet" type="text/css" href="style.css">
-
-</head>
 <body>
 
   <?php
@@ -14,53 +9,10 @@
     $websiteErr = "";
   ?>
 
-<div class="welcome">
-  <span class="welcome">CPSC304 Team 5</span>
-  <span class="welcome" style="font-size: 90%; padding:0px 10px 15px 100px;">
-   Friendship Gym
-  </span>
-</div>
-
-<ul class="header">
-    <li class="dropdown header">
-        <a href="member_add.php">Membership Management</a>
-        <div class="dropdown_list">
-            <a href="member_add.php">Add Membership</a>
-            <a href="measurements_add.php">Add Member Measurements</a>
-        </div>
-    </li>
-    <li class="dropdown header">
-        <a href="class_add.php">Manage Classes</a>
-        <div class="dropdown_list">
-            <a href="class_add.php">Add Classes</a>
-            <a href="classtype_add.php">Add New Class Type</a>
-        </div>
-    </li>
-
-    <li class="dropdown header">
-        <a href="reservation_add">Schedule Management</a>
-    </li>
-
-    <li class="dropdown header">
-        <a href="Equipment_add.php">Equipment Management</a>
-    </li>
-
-    <li class="dropdown header">
-        <a href="#">Customer View</a>
-        <div class="dropdown_list">
-            <a href="customer_reservation.php">Manage Reservation</a>
-            <a href="customer_schedule.php">View Class Schedule</a>
-            <a href="customer_fitness.php">View Fitness Measurements</a>
-        </div>
-    </li>
-
-</ul>
-
-
   <div class="column content">
     <h3>Add New Equipment</h3>
     <label><span class="error">* required</span></label>
-    <form method="post" action="Equipment_add.php">  
+    <form method="post" action="Equipment_add.php">
       <label for="PurchaseDate">Purchase Date:</label> <input type="text" name="PurchaseDate">
       <span class="error">* <?php echo $nameErr;?></span>
       <br><br>
@@ -80,9 +32,9 @@
       <span class="error">* <?php echo $websiteErr;?></span>
     <br><br>
       <div class="button">
-        <input type="submit" name="submit" value="Submit">  
+        <input type="submit" name="submit" value="Submit">
       </div>
-      
+
     </form>
 
   </div>
@@ -93,34 +45,34 @@ New City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <form method="POST" action="Equipment_add.php">
 <!--refresh page when submit-->
 
-   <p><input type="text" name="CurEquipID" size="6"><input type="text" name="oldCity" size="18"><input type="text" name="newCity" 
+   <p><input type="text" name="CurEquipID" size="6"><input type="text" name="oldCity" size="18"><input type="text" name="newCity"
 size="18"><input type="text" name="oldLocation" size="18"><input type="text" name="newLocation" size="18">
 <!--define two variables to pass the value-->
-      
+
 <input type="submit" value="update" name="updatesubmit"></p>
 </form>
 </div>
 <div class="column content">
     <h3>Remove Old Equipment</h3>
     <label><span class="error">* required</span></label>
-    <form method="post" action="Equipment_add.php">  
+    <form method="post" action="Equipment_add.php">
    <label for="EQUIPID">EquipID: </label> <input type="text" name="DeleteEquip">
       <span class="error">* <?php echo $websiteErr;?></span>
     <br><br>
       <div class="button">
-        <input type="submit" name="DeleteEquipment" value="DeleteEquipment">  
+        <input type="submit" name="DeleteEquipment" value="DeleteEquipment">
       </div>
-      
+
     </form>
 
   </div>
 <?php
 
-//this tells the system that it's no longer just parsing 
+//this tells the system that it's no longer just parsing
 //html; it's now parsing PHP
 
 $success = True; //keep track of errors so it redirects the page only if there are no errors
-$db_conn = OCILogon("ora_c7s0b", "a38293149", "dbhost.ugrad.cs.ubc.ca:1522/ug");
+$db_conn = OCILogon("ora_u2m0b", "a38920154", "dbhost.ugrad.cs.ubc.ca:1522/ug");
 
 function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL command and executes it
   //echo "<br>running ".$cmdstr."<br>";
@@ -129,7 +81,7 @@ function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL com
 
   if (!$statement) {
     echo "<br>Cannot parse the following command: " . $cmdstr . "<br>";
-    $e = OCI_Error($db_conn); // For OCIParse errors pass the       
+    $e = OCI_Error($db_conn); // For OCIParse errors pass the
     // connection handle
     echo htmlentities($e['message']);
     $success = False;
@@ -151,9 +103,9 @@ function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL com
 function executeBoundSQL($cmdstr, $list) {
   /* Sometimes the same statement will be executed for several times ... only
    the value of variables need to be changed.
-   In this case, you don't need to create the statement several times; 
+   In this case, you don't need to create the statement several times;
    using bind variables can make the statement be shared and just parsed once.
-   This is also very useful in protecting against SQL injection.  
+   This is also very useful in protecting against SQL injection.
       See the sample code below for how this functions is used */
 
   global $db_conn, $success;
@@ -192,7 +144,7 @@ function printResult($result) { //prints results from a select statement
   echo "<tr><th>EquipID</th><th>Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>PurchaseDate&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Branch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>City</th></tr>";
 
   while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
-    echo "<tr><td>" .  $row["EQUIPID"] . "</td><td>" .  $row["PURCHASEPRICE"] . "</td><td>".  $row["PURCHASEDATE"] . "</td><td>" .  $row["EQUIPTYPE"] . "</td><td>" .  $row["LOCATION"] . "</td><td>" .  $row["CITY"] . "</td></tr>"; //or just use "echo $row[0]" 
+    echo "<tr><td>" .  $row["EQUIPID"] . "</td><td>" .  $row["PURCHASEPRICE"] . "</td><td>".  $row["PURCHASEDATE"] . "</td><td>" .  $row["EQUIPTYPE"] . "</td><td>" .  $row["LOCATION"] . "</td><td>" .  $row["CITY"] . "</td></tr>"; //or just use "echo $row[0]"
   }
   echo "</table>";
 
@@ -216,6 +168,8 @@ if ($db_conn) {
       );
       executeBoundSQL("insert into Equipment values (:bind1, :bind2, :bind3, :bind4, :bind5, :bind6)", $alltuples);
       OCICommit($db_conn);
+      $result = executePlainSQL("select * from Equipment");
+      printResult($result);
 
     } else
       if (array_key_exists('updatesubmit', $_POST)) {
@@ -232,6 +186,8 @@ if ($db_conn) {
         );
         executeBoundSQL("update Equipment set CITY=:bind3, LOCATION=:bind5 where CITY=:bind2 AND EQUIPID=:bind1 AND LOCATION=:bind4", $alltuples);
         OCICommit($db_conn);
+        $result = executePlainSQL("select * from Equipment");
+        printResult($result);
 
       }
       else
@@ -245,6 +201,8 @@ if ($db_conn) {
         );
         executeBoundSQL("DELETE FROM Equipment WHERE EQUIPID=:bind1", $alltuples);
         OCICommit($db_conn);
+        $result = executePlainSQL("select * from Equipment");
+        printResult($result);
 
       }
 
@@ -272,4 +230,3 @@ if ($db_conn) {
 </body>
 
 </html>
-
