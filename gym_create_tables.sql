@@ -78,7 +78,7 @@ ON DELETE SET NULL);
 
 Create Table FitnessMeasurement (
 Height BINARY_FLOAT,
-startDate varchar2(8),
+startDate varchar2(16),
 fmID integer,
 weight BINARY_FLOAT,
 BodyFat varchar2(8),
@@ -92,12 +92,12 @@ ON DELETE CASCADE
 
 CREATE TABLE Equipment(
 EquipID	integer,
-PurchaseDate varchar2(8),
-PurchasePrice BINARY_FLOAT,
-EquipType varchar2(15),
+PurchaseDate varchar2(16),
+PurchasePrice varchar2(8),
+EquipType varchar2(25),
 Location varchar2(30),
 City varchar2(20),
-PRIMARY KEY (EquipID, Location, City),
+PRIMARY KEY (EquipID),
 FOREIGN KEY (Location, City) REFERENCES GymBranch
 ON DELETE CASCADE
 );

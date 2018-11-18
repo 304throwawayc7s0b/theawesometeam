@@ -51,7 +51,6 @@ insert into Customer (CustomerID, Phone, Name, Address, CreditCard) values (49, 
 insert into Customer (CustomerID, Phone, Name, Address, CreditCard) values (50, '779-175-3613', 'Giustino Billings', '08865 Bobwhite Point', '3543314153536555');
 
 
-
 --Data for table Instructor
 insert into instructor values (1,'778-778-778','female',30,'Ann', 'Perkins', 'Yoga');
 insert into instructor values (2,'778-123-778','male',20,'Kev', 'Perkins', 'Yoga');
@@ -84,12 +83,109 @@ insert into timeperiod values('20181101', '20181201', '10am', '12pm');
 insert into timeperiod values('20181101', '20181201', '1pm', '2pm');
 insert into timeperiod values('20181101', '20181201', '3pm', '5pm');
 
-
 --Data for table  GymMember
 insert into gymmember values (1,'monthly member', '20181001','20181101', '11am', '12pm');
-
+insert into gymmember values (2,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (3,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (4,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (5,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (6,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (7,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (8,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (9,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (10,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (11,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (12,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (13,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (14,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (15,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (16,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (17,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (18,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (19,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (20,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (21,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (22,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (23,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (24,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (25,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (26,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (27,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (28,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (29,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (30,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (31,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (32,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (33,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (34,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (35,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (36,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (37,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (38,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (39,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (40,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (41,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (42,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (43,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (44,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (45,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (46,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (47,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (48,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (49,'monthly member', '20181001','20181101', '11am', '12pm');
+insert into gymmember values (50,'monthly member', '20181001','20181101', '11am', '12pm');
 
 --Data for table FitnessMeasurement
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 1);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 2);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 3);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 4);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 5);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 6);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 7);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 8);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 9);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 10);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 11);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 12);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 13);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 14);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 15);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 16);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 17);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 18);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 19);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 20);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 21);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 22);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 23);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 24);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 25);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 26);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 27);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 28);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 29);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 30);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 31);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 32);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 33);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 34);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 35);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 36);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 37);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 38);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 39);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 40);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 41);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 42);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 43);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 44);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 45);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 46);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 47);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 48);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 49);
+insert into FitnessMeasurement values (71, '11/17/2018', 1, 160, '20', '100', 100, 50);
 
 
 --Data for table ClassType
@@ -130,7 +226,6 @@ insert into class values(19,'1hr','45','Room108',19,'20181001','20181101', '11am
 insert into class values(20,'1hr','45','Room108',20,'20181001','20181101', '1pm', '2pm',13);
 
 
-
 --Data for table Reservation
 insert into reservation values('Killarney Centre','Vancouver',1,1,'100','6709681032674994','$30','12:00pm','2018-10-01','n/a');
 insert into reservation values('Killarney Centre','Vancouver',2,1,'101','6709681032674994','$30','12:30pm','2018-10-02','n/a');
@@ -166,12 +261,54 @@ insert into reservation values('Point Grey','Vancouver',4,5,'1011','670678149338
  --Data for table GymBranch
 insert into GymBranch values('Sunset Centre','Vancouver');
 insert into GymBranch values('Killarney Centre','Vancouver');
-insert into GymBranch values('Grey','Vancouver');
-
---Data for table Equipment
-
+insert into GymBranch values('Point Grey','Vancouver');
+insert into GymBranch values('Millwood','Edmonton');
 
 --Data for table Hosted
+insert into Hosted values('Millwood', 'Edmonton', 1);
+insert into Hosted values('Killarney Centre','Vancouver', 2);
+insert into Hosted values('Sunset Centre','Vancouver', 3);
+insert into Hosted values('Point Grey','Vancouver', 4);
+insert into Hosted values('Millwood', 'Edmonton', 5);
+insert into Hosted values('Killarney Centre','Vancouver', 6);
+insert into Hosted values('Sunset Centre','Vancouver', 7);
+insert into Hosted values('Point Grey','Vancouver', 8);
+insert into Hosted values('Millwood', 'Edmonton', 9);
+insert into Hosted values('Killarney Centre','Vancouver', 10);
+insert into Hosted values('Sunset Centre','Vancouver', 11);
+insert into Hosted values('Point Grey','Vancouver', 12);
+insert into Hosted values('Millwood', 'Edmonton', 13);
+insert into Hosted values('Killarney Centre','Vancouver', 14);
+insert into Hosted values('Sunset Centre','Vancouver', 15);
+insert into Hosted values('Point Grey','Vancouver', 16);
+insert into Hosted values('Millwood', 'Edmonton', 17);
+insert into Hosted values('Killarney Centre','Vancouver', 18);
+insert into Hosted values('Sunset Centre','Vancouver', 19);
+insert into Hosted values('Point Grey','Vancouver', 20);
 
+--Data for table Equipment
+insert into Equipment values(1, '11/17/2018', '32.15', 'bench', 'Millwood', 'Edmonton');
+insert into Equipment values(2, '11/17/2018', '32.15', 'bench', 'Millwood', 'Edmonton');
+insert into Equipment values(3, '11/17/2018', '32.15', 'bench', 'Millwood', 'Edmonton');
+insert into Equipment values(4, '11/17/2018', '32.15', 'bench', 'Millwood', 'Edmonton');
+insert into Equipment values(5, '11/17/2018', '325', 'TrendMill', 'Millwood', 'Edmonton');
+insert into Equipment values(6, '10/17/2018', '325', 'TrendMill', 'Millwood', 'Edmonton');
+insert into Equipment values(7, '11/17/2018', '325', 'TrendMill', 'Millwood', 'Edmonton');
+insert into Equipment values(8, '11/17/2018', '325', 'TrendMill', 'Millwood', 'Edmonton');
+insert into Equipment values(9, '11/17/2018', '35.10', 'bench', 'Sunset Centre', 'Vancouver');
+insert into Equipment values(10, '11/17/2018', '35.10', 'bench', 'Sunset Centre', 'Vancouver');
+insert into Equipment values(11, '11/12/2018', '35.10', 'bench', 'Sunset Centre', 'Vancouver');
+insert into Equipment values(12, '11/12/2018', '35.10', 'bench', 'Sunset Centre', 'Vancouver');
+insert into Equipment values(13, '11/12/2018', '35.10', 'bench', 'Sunset Centre', 'Vancouver');
+insert into Equipment values(14, '11/17/2018', '1000', 'Smith Machine', 'Killarney Centre', 'Vancouver');
+insert into Equipment values(15, '11/17/2018', '1000', 'Smith Machine', 'Killarney Centre', 'Vancouver');
+insert into Equipment values(16, '11/17/2018', '35.10', 'bench', 'Killarney Centre', 'Vancouver');
+insert into Equipment values(17, '11/17/2018', '35.10', 'bench', 'Killarney Centre', 'Vancouver');
+insert into Equipment values(18, '11/17/2018', '35.10', 'bench', 'Killarney Centre', 'Vancouver');
+insert into Equipment values(19, '11/17/2018', '1200', 'Smith Machine', 'Point Grey', 'Vancouver');
+insert into Equipment values(20, '11/17/2018', '1200', 'Smith Machine', 'Point Grey', 'Vancouver');
+insert into Equipment values(21, '11/10/2018', '37.10', 'bench', 'Point Grey', 'Vancouver');
+insert into Equipment values(22, '11/10/2018', '37.10', 'bench', 'Point Grey', 'Vancouver');
+insert into Equipment values(23, '11/10/2018', '37.10', 'bench', 'Point Grey', 'Vancouver');
 
 commit;

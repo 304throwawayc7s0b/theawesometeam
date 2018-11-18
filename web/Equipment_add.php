@@ -121,7 +121,7 @@ size="18"><input type="text" name="oldLocation" size="18"><input type="text" nam
 //html; it's now parsing PHP
 
 $success = True; //keep track of errors so it redirects the page only if there are no errors
-$db_conn = OCILogon("ora_c7s0b", "a38293149", "dbhost.ugrad.cs.ubc.ca:1522/ug");
+$db_conn = OCILogon("ora_u2m0b", "a38920154", "dbhost.ugrad.cs.ubc.ca:1522/ug");
 
 function executePlainSQL($cmdstr) { //takes a plain (no bound variables) SQL command and executes it
   //echo "<br>running ".$cmdstr."<br>";
@@ -190,7 +190,7 @@ function executeBoundSQL($cmdstr, $list) {
 function printResult($result) { //prints results from a select statement
   echo "<br>Got data from table Equpiment:<br>";
   echo "<table>";
-  echo "<tr><th>EquipID</th><th>Price</th><th>Purchase Date</th><th>type</th><th>Branch</th></tr>";
+  echo "<tr><th>EquipID</th><th>Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>PurchaseDate&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Branch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>City</th></tr>";
 
   while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
     echo "<tr><td>" .  $row["EQUIPID"] . "</td><td>" .  $row["PURCHASEPRICE"] . "</td><td>".  $row["PURCHASEDATE"] . "</td><td>" .  $row["EQUIPTYPE"] . "</td><td>" .  $row["LOCATION"] . "</td><td>" .  $row["CITY"] . "</td></tr>"; //or just use "echo $row[0]" 
@@ -206,8 +206,8 @@ if ($db_conn) {
       //Getting the values from user and insert data into the table
       $tuple = array (
         ":bind1" => $_POST['EquipID'],
-        ":bind2" => $_POST['PurchasePrice'],
-        ":bind3" => $_POST['PurchaseDate'],
+        ":bind2" => $_POST['PurchaseDate'],
+        ":bind3" => $_POST['PurchasePrice'],
         ":bind4" => $_POST['EquipType'],
         ":bind5" => $_POST['Location'],
         ":bind6" => $_POST['City']
